@@ -1,3 +1,5 @@
+package javaBasics;
+
 class StringFilter{
 	public static void main(String args[]) {
 		String str = "A %##$ String (*&";

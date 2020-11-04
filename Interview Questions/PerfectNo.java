@@ -1,3 +1,5 @@
+package javaBasics;
+
 import java.util.*;
 /**
 	Program to find a perfect number

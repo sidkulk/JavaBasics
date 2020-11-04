@@ -1,3 +1,5 @@
+package javaBasics;
+
 /**
 	Program to print fibonacci series...
 	

@@ -1,4 +1,4 @@
-package Hcflcm;
+package javaBasics.Hcflcm;
 
 import java.util.*;
 

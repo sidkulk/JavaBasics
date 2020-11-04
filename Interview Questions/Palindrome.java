@@ -1,3 +1,5 @@
+package javaBasics;
+
 /**
 Java program to chick whether an integer is a palindrome or not.
 */

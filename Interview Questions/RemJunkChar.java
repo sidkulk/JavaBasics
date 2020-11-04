@@ -1,3 +1,5 @@
+package javaBasics;
+
 abstract class Myclass{
 	private int a, b;
 	

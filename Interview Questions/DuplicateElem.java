@@ -1,4 +1,5 @@
-//import java.util.Scanner;
+package javaBasics;
+
 import java.util.*;
 import java.util.Map.*;
 /**

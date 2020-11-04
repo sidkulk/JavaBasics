@@ -1,0 +1,1 @@
+this is a test string with append set to false. Date: 24/10/2020This is an appended string with append set to true. \\nFileWriter(filename, boolean append) constructor called

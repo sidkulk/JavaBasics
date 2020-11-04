@@ -1,4 +1,4 @@
-package com.StringManip.Codes;
+package javaBasics.com.StringManip.Codes;
 import java.util.*;
 
 class StringManipClass{

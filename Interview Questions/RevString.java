@@ -1,3 +1,5 @@
+package javaBasics;
+
 import java.util.*;
 /**
 *	A JAVA PROGRAM TO REVERSE A STRING
