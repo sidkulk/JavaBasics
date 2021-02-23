@@ -195,3 +195,66 @@ class AnotherClass {
 		inner.methFour();
 	}
 }
+
+/*
+	inner class can access the variables of outer class without any issues
+	EX:
+*/
+
+class OuterFiveEx {
+	
+	int x = 10;
+	static int y = 20;
+	
+	class InnerClassFIve {
+		public void methodThree() {
+			System.out.println("Vlaue of X: "+x+"\nValue of Y: "+y);
+		}
+	}
+	
+	public static void main(String[] args) throws Exception {
+		new OuterFiveEx().new InnerClassFIve().methodThree();
+	}
+}
+
+// Output: X: 10
+//		   Y: 20
+
+/*
+	when you have multiple variables of same name in different context
+	EX:
+*/
+
+class OuterClassSix {
+	int x = 10;
+	class InnerClassSix {
+		int x = 100;
+		
+		public void methodSix() {
+			int x = 1000;
+			System.out.println(x); //prints 1000
+			System.out.println(this.x); //prints 100
+			System.out.println(InnerClassSix.this.x); //prints 100
+			System.out.println(OuterClassSix.this.x); //prints 10
+		}
+	}
+	
+	public static void main(String[] arsg) {
+		new OuterClassSix().new InnerClassSix().methodSix();
+	}
+}
+
+/**
+	MODIFIERS Applicable for OUTER class are:
+	1)	public
+	2)	default(no modifier)
+	3)	final
+	4)	abstract
+	5)	strictfp (used to restrict floating point calculations to maintain portability)
+	
+	MODIFIERS applicable for INNER class:
+	1)	private
+	2)	protected
+	3)	static
+	4) All the modifiers of OUTER class.
+*/
