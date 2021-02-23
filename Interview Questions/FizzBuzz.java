@@ -38,7 +38,7 @@ class TwoSum {
 					num2 = arr[j];
 					flag = 1;
 					break;
-				}
+				}	
 			}
 			if(flag == 1) break;
 		}
