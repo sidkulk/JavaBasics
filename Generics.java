@@ -1,5 +1,8 @@
 package javaBasics;
 
+import static java.lang.System.out;
+import java.util.*;
+
 /**
 *	Here the Gen class is declared as a generic class and 
 	the type parameter passed is <T> where T represents any type
@@ -178,27 +181,75 @@ class AvgCmpClass {
 	}
 }
 
+/**	General List collections framework/API overview..
 
-class CordTwoD {
-	int x, y;
-	CordTwoD(int x, int y) {
-		this.x = x;
-		this.y = y;
+							Collection
+								\
+								 \
+								  \
+								   \
+								   List-------------
+									/\  		   |
+								   /  \            |
+							ArrayList LinkedList  Vector
+													|
+													|
+												  Stack
+												  
+						So, in polymorphysm, List<> l = new ArrayList<>();
+													  = new LinkedList<>();
+													  = new Vector<>();
+													  = new Stack<>();
+		
+		Now, here	List<String> list = new ArrayList<>();
+					|		|
+					|       |
+				Base Type  Parameter Type
+	
+	Polymorphism concept applicable only for the base type but not for parameter type. So, 
+	List<Object> list = new ArrayList<String>(); //will throw a compiletime error(Incompatible types)
+	
+	Usage of parent reference to hold child object is concept of polymorphism..
+
+*/
+
+class Test {
+	public static void main(String[] args) {
+	
+		Collection<String> coll = new ArrayList<String>(); //valid
+		ArrayList<String> arrl = new ArrayList<String>();	//Valid
+		List<String> list = new ArrayList<String>(); //still valid
+		
+		ArrayList<Object> objList = new ArrayList<String>(); //invalid! Compiletime error imminent
 	}
 }
 
-class CordThreeD extends Cord{
-	int z;
-	CordThreeD(int x, int y, int z) {
-		super(x, y);
-		this.z = z;
+/**
+	Generic classes. Internal functioning:
+	Until Java jdk 1.4 version, all generics took Object as <> args. and had to 
+	be typecasted for a perticular type retrival. This allowed any Object type class to be passed as parameter type and hence, 
+	this was not type-safe. The return type of get method is Object. Hence at the time of retrival we had to perform 
+	typecasting.
+	Eg: 
+	
+	class ArrayList {
+		void add(Object obj) {
+		
+			//implementation
+			//code here
+			
+		}
+		
+		Object get() {
+			//implementation code
+			//here
+			
+			return Object;
+		}
 	}
-}
+	
+	So in Java JDK 1.5 when the Generics concept was introduced, 
+	the type casting problems were solved and type-safety was improved. (video timestamp: 38:48)
+*/
 
-class CordFourD extends CordThreeD {
-	int t;
-	CordFourD(int x, int y, int z, int t) {
-		super(x, y, z);
-		this.t = t;
-	}
-}
+

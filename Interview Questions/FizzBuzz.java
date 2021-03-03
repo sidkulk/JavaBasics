@@ -61,3 +61,10 @@ class TwoSum {
 		}
 	}
 }
+
+abstract class PreDev<T> {
+	public abstract void setValues(T var1, T var2);
+	public abstract T getValues(T var1, T var2);	
+}
+
+
