@@ -1,4 +1,4 @@
-//package passOne;
+package passOne;
 /**
  * This is a java program to demonstrate the working of pass one assembler
  * programmed with LOVE by Siddharth Kulkarni
@@ -45,7 +45,6 @@ class PassOne{
 		
 		HashMap<String, Integer> symbol = new HashMap<>();
 		HashMap<String, Integer> literal = new HashMap<>();
-		//HashMap<Integer, Integer> pool = new HashMap<Integer, Integer>();
         Set<Map.Entry<String, Integer>> litset = literal.entrySet();
         Set<Map.Entry<String, Integer>> symset = symbol.entrySet();
 		int lc = 0;
@@ -94,10 +93,10 @@ class PassOne{
                         }
 					}
                     else if(MOT.containsKey(str)) {
-						//do nothing
+						
 					}
 					else if(Register.containsKey(str)) {
-						//do nothing
+						
 					}
                      else if(DL.containsKey(str)){
                         switch (str){
