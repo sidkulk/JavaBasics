@@ -15,6 +15,9 @@ class maxNum{
 			m = c;
 		return m;
 	}
+<<<<<<< HEAD
+}
+=======
 }
 
 class Solution {
@@ -57,3 +60,4 @@ class Solution {
         }
     }
 }
+>>>>>>> a4a590a54071c139ba587b93d0c42d571b20c322

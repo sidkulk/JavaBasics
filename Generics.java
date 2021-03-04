@@ -1,4 +1,8 @@
+
 package javaBasics;
+
+import static java.lang.System.out;
+import java.util.*;
 
 /**
 *	Here the Gen class is declared as a generic class and 
@@ -178,27 +182,173 @@ class AvgCmpClass {
 	}
 }
 
+/**	General List collections framework/API overview..
 
-class CordTwoD {
-	int x, y;
-	CordTwoD(int x, int y) {
-		this.x = x;
-		this.y = y;
+							Collection
+								\
+								 \
+								  \
+								   \
+								   List-------------
+									/\  		   |
+								   /  \            |
+							ArrayList LinkedList  Vector
+													|
+													|
+												  Stack
+												  
+						So, in polymorphysm, List<> l = new ArrayList<>();
+													  = new LinkedList<>();
+													  = new Vector<>();
+													  = new Stack<>();
+		
+		Now, here	List<String> list = new ArrayList<>();
+					|		|
+					|       |
+				Base Type  Parameter Type
+	
+	Polymorphism concept applicable only for the base type but not for parameter type. So, 
+	List<Object> list = new ArrayList<String>(); //will throw a compiletime error(Incompatible types)
+	
+	Usage of parent reference to hold child object is concept of polymorphism..
+
+*/
+
+class Test {
+	public static void main(String[] args) {
+	
+		Collection<String> coll = new ArrayList<String>(); //valid
+		ArrayList<String> arrl = new ArrayList<String>();	//Valid
+		List<String> list = new ArrayList<String>(); //still valid
+		
+		//ArrayList<Object> objList = new ArrayList<String>(); //invalid! Compiletime error imminent
 	}
 }
 
-class CordThreeD extends Cord{
-	int z;
-	CordThreeD(int x, int y, int z) {
-		super(x, y);
-		this.z = z;
+/**
+	Generic classes. Internal functioning:
+	Until Java jdk 1.4 version, all generics took Object as <> args. and had to 
+	be typecasted for a perticular type retrival. This allowed any Object type class to be passed as parameter type and hence, 
+	this was not type-safe. The return type of get method is Object. Hence at the time of retrival we had to perform 
+	typecasting.
+	Eg: 
+	
+	class ArrayList {
+		void add(Object obj) {
+		
+			//implementation
+			//code here
+			
+		}
+		
+		Object get() {
+			//implementation code
+			//here
+			
+			return Object;
+		}
+	}
+	
+	So in Java JDK 1.5 when the Generics concept was introduced, 
+	the type casting problems were solved and type-safety was improved. (video timestamp: 38:48)
+	
+	So in a generic class after jdk 1.5 A typical ArrayList class will be like this: 
+	
+	class ArrayList<T> {
+		void add(T obj) {
+			//add code
+			//method definition
+		}
+		
+		T get() {
+			//get method
+			//definition
+			
+			return T;
+		}
+	}
+	
+	here the T parameter is replaced with a Class passed as generic argument like String, Integer, Long..etc
+	No primitive types are allowed in Generic type parameter
+*/
+
+
+//eg: 
+
+class Student {
+	private int id;
+	private int PRN;
+	private String fname;
+	private String lname;
+	private String email;
+	private String phno;
+	private String addr;
+	
+	Student(int id, int PRN, String fname, String lname, String email, String phno, String addr) {
+		this.id = id;
+		this.PRN = PRN;
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+		this.phno = phno;
+		this.addr = addr;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	@Override
+	public String toString() {
+		return "id: "+this.id+" , Fname: "+this.fname+" , Lname: "+this.lname;
 	}
 }
 
-class CordFourD extends CordThreeD {
-	int t;
-	CordFourD(int x, int y, int z, int t) {
-		super(x, y, z);
-		this.t = t;
+class School {
+	static HashMap<Integer, Student> hmap;
+	
+	static {
+		hmap = new HashMap<>();
+	}
+	
+	public static void add(Student student) {
+		int id = student.getId();
+		hmap.put(id, student);
+	}
+	
+	public static Student getObjectById(int Id) {
+		Student student = hmap.get(Id);
+		return student; 
+	}
+}
+
+class Person<T> {
+	T obj;
+	
+	Person(T obj) {
+		this.obj = obj;
+	}
+	
+	public void showPerson() {
+		out.println(this.obj);
+	}
+	
+	public T getPerson() {
+		return obj;
+	}
+}
+
+class Operations {
+	public static void main(String[] args) {
+		School.add(new Student(101, 10001, "Siddharth", "Kulkarni", "kulksud@gmail.com", "9975114507", "Pimpri, Pune"));
+		
+		out.println(School.getObjectById(101));
+		
+		Person person = new Person(new Student(102, 10002, "Sid", "Kulk", "sid@gmail.com", "8875114507", "Pimpri, Pune"));
+		out.println(person.getPerson());
 	}
 }
