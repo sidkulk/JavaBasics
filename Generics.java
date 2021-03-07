@@ -352,3 +352,95 @@ class Operations {
 		out.println(person.getPerson());
 	}
 }
+
+/**
+	===============================
+			BOUNDED TYPES
+	===============================
+*/
+
+
+/*
+	class Test<T> {
+		//here T is type parameter.
+		
+		public void m1(T a, T b) {
+			sop(a*b);
+			sop(a+b);
+			sop(a/b);
+		}
+		
+		//the arithmetic opers are valid for Number class. But in 
+		case of String and other user defined types like Student class, 
+		such operations are meaningless.
+		So in this case we apply Bounded Type parameter. This allows 
+		only selected type of parameters to be passed.
+	}
+	
+	syntax for bounded type: 
+	class Test<T extends x> {
+		//class body
+	}
+	
+	here x can be either class or interface. If x is a class then, 
+	as a type parameter either x type or it's child classes. If x is an
+	interface then as a type parameter we can pass either x type or it's 
+	implementation classes
+*/
+
+class MathArithmatic<T extends Number> {
+	private T a, b;
+	public T add(T a, T b) {
+		this.a = a;
+		this.b = b;
+		return this.a + this.b;
+	}
+	
+	public T sub(T a, T b) {
+		this.a = a;
+		this.b = b;
+		return this.a - this.b;
+	}
+	
+	public T mul(T a, T b) {
+		this.a = a;
+		this.b = b;
+		return this.a * this.b;
+	}
+}
+
+class ArithOperClass {
+	public static void main(String[] args) {
+		MathArithmatic<Integer> intMath = new MathArithmatic<>();
+		out.println("sum of 5 and 5 is: "+intMath.add(5, 5));
+		
+		MathArithmatic<Float> floatMath = new MathArithmatic<>();
+		out.println("difference of 55.33 and 12.75: "+floatMath.sub(55.33f, 12.75f));
+	}
+}
+
+/*
+	if we want to pass more than one type of class or interface 
+	in type parameter then we can do that using the '&' symbol.
+	
+	class Test<T extends Number & Runnable & Comparable & ... > {
+		//class body
+	}
+	
+	Important Note: 
+	class Test<T extends Runnable & Comparable> //is valid bcz class can implement more than 
+												one interface.
+	
+	class Test<T extends Number & Runnable & Comparable> //is valid
+	
+	class Test<T extends Runnable & Number> // is INVALID because we have to take 
+												class first and then interface. Here Runnable is 
+												an interface and Number is a class. (same applies during inheritance)
+												
+	class Test<T extends Number & Thread> //is INVALID because we cannot extend 2 classes at the same time.
+										    multiple inheritance is not allowed in java. class A extends B, C is not valid
+										    
+										    Video timestamp: 36:33
+*/
+
+
