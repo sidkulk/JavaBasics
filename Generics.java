@@ -388,6 +388,7 @@ class Operations {
 	implementation classes
 */
 
+/*
 class MathArithmatic<T extends Number> {
 	private T a, b;
 	public T add(T a, T b) {
@@ -408,6 +409,7 @@ class MathArithmatic<T extends Number> {
 		return this.a * this.b;
 	}
 }
+*/
 
 class ArithOperClass {
 	public static void main(String[] args) {
@@ -442,5 +444,58 @@ class ArithOperClass {
 										    
 										    Video timestamp: 36:33
 */
+/**
+	Note: Some basic conclusions: 
+	1) We can define bounded types only by using extends keyword and we can't use implements and super keywords but
+		we can replace implements with extends keyword.
+	2) We can use any letter instead of <T>. We can take <A>, <Siddharth>, <{any valid Java identifier}>
+*/
+
+/*
+		========================
+		Multiple Type Parameters
+		========================
+*/
+
+class HashMapClass<K, V> {
+	private K key;
+	private V value;
+	private HashMapClass[] harray;
+	
+	HashMapClass(K key, V value) {
+		this.key = key;
+		this.value = value;
+	}
+	
+	@Override
+	public String toString() {
+		return "Key "+this.key+" Value: "+this.value;
+	}
+}
+
+/*
+	The above class has multiple type parameters. We separate them using comma "," within the angular brackets
+*/
+
+/*
+	==========================================
+	Generic Methods and Wildcard Character <?>
+	==========================================
+	
+	
+	let's say you have an arraylist: 
+	ArrayList<String> slist = new ArrayList<>();
+	
+	you have an m1() method and you pass slist as method argument.
+	m1(slist). The possible method definition of m1() is: 
+	
+	public static void m1(ArrayList<String> slist) {
+		//method body
+	} 
+	
+	now suppose you have an AyyayList of Integer class. You cannot pass that 
+	as method argument in the m1() method because m1() accepts String type ArrayList<>();
+*/
+
 
 
