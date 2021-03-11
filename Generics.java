@@ -493,7 +493,7 @@ class HashMapClass<K, V> {
 		//method body
 	} 
 	
-	now suppose you have an AyyayList of Integer class. You cannot pass that 
+	now suppose you have an ArrayList of Integer class. You cannot pass that 
 	as method argument in the m1() method because m1() accepts String type ArrayList<>();
 */
 
