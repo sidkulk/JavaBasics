@@ -500,5 +500,126 @@ class WildCardChar {
     }
 }
 
+/**
+	======================
+		Generic Methods
+	======================
+*/
 
+/**
+	We can declare type parameter either at class level or method level
+*/
 
+// Declaring Type parameter at class level: 
+class GenMethClass<T> {
+	//We can use 'T' within the class based
+	//on our requirements
+}
+
+// Declaring Type parameter at Method level:  
+class GenMethLvl {
+	public <T> void m1(T ob1, T ob2) {
+		/*
+		*	Use 'T' anywhere within the method
+		*	based on our requirement
+		*/
+	}
+	
+	public <T extends Number> void m2(T ob1, T ob2) {
+		
+	}
+	
+	public <T extends Runnable> void m3() {
+	
+	}
+	
+	public <T extends Number & Runnable> void m4() {
+	
+	}
+	
+	public <T extends Comparable & Runnable> void m5() {
+	
+	}
+	
+	public <T extends Number & Comparable & Runnable> void m6() {
+	
+	}
+	
+	//all the rules of type parameter applies to class level as well as method level
+}
+//we have to declare type parameter just before return type
+
+/**
+
+COMMUNICATION WITH NON-GENERIC CODE
+
+If we send generic object to non-generic area, then it starts behaving like 
+non-generic object. Similarly if we send non-generic object to generic area, it 
+starts behaving like generic object i.e Location in which object present based on that 
+behavior will be defined
+*/
+
+class GenAndNonGenArea {
+	public static void main(String[] args) {
+		ArrayList<String> list = new ArrayList<>();	//here ArrayList accepts String type data
+		list.add("Siddharth");
+		list.add("Kulkarni");
+		
+		m1(list);	//method call to m1() method
+		//list.add(12.54); //will throw a CE. bcz the list is inside a Generic area
+		System.out.println(list);	
+	}
+	
+	public static void m1(ArrayList l) {	//m1() method is a non generic method
+		l.add(10);	//passing Integer type data
+		l.add(34.56);	//Passing floating point type data.
+		//list will accept Number data because it is in non-generic area.
+	}
+}
+
+//Here the ArrayList accepts String type data, BUT in m1() method the list behaves as a 
+//non-generic type and accepts a Number type data.
+
+/**
+	=================
+	    CONCLUSION
+	=================
+*/
+
+/*
+	The main purpose of generic is to provide: 
+	1) Type-safety and 
+	2) Resolve type casting problems.
+	
+	At the time of compilation, the generic template is removed and replaced with 
+	normal types.
+	Type safety and type casting are applicable at compile time, hence generics concept is 
+	also available at compile time but not at runtime. 
+	
+	Proof: 
+	
+	Compiler is always going to check reference type. JVM is going to check runtime object.
+	ArrayList list = new ArrayList<String>();
+	At the time of compilation as last step generics syntax is REMOVED and hence for the JVM 
+	generic syntax won't be available.
+	
+	ArrayList list = new ArrayList<String>();
+	list.add(10.5);
+	list.add(45);
+	list.add(true);
+	
+	the above expression is CORRECT. It will compile.
+*/
+
+// Below is a working example.
+
+class RunTimeCompileTime {
+	public static void main(String[] args) {
+		ArrayList list = new ArrayList<String>();
+		list.add(10);
+		list.add(12.43);
+		list.add(true);
+		
+		out.println(list);
+	}
+}
