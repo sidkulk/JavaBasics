@@ -411,16 +411,6 @@ class MathArithmatic<T extends Number> {
 }
 */
 
-class ArithOperClass {
-	public static void main(String[] args) {
-		MathArithmatic<Integer> intMath = new MathArithmatic<>();
-		out.println("sum of 5 and 5 is: "+intMath.add(5, 5));
-		
-		MathArithmatic<Float> floatMath = new MathArithmatic<>();
-		out.println("difference of 55.33 and 12.75: "+floatMath.sub(55.33f, 12.75f));
-	}
-}
-
 /*
 	if we want to pass more than one type of class or interface 
 	in type parameter then we can do that using the '&' symbol.
@@ -496,6 +486,19 @@ class HashMapClass<K, V> {
 	now suppose you have an ArrayList of Integer class. You cannot pass that 
 	as method argument in the m1() method because m1() accepts String type ArrayList<>();
 */
+
+class WildCardChar {
+    public static void main(String[] args) {
+        ArrayList<?> arrList = new ArrayList<String>(); //Valid
+        ArrayList<?> arrList2 = new ArrayList<Integer>();   //valid
+        ArrayList<? extends Number> arrList3 = new ArrayList<Integer>(); //valid
+       // ArrayList<? extends Number> arrList4 = new ArrayList<String>(); //Invalid bcz String is not a subclass of Number. Compiletime Error thrown: Incompatible type found
+       ArrayList<? super String> arrList5 = new ArrayList<Object>();
+      // ArrayList<?> arrList3 = new ArrayList<? extends Number>(); bcz we can use <?> only during declaration but not at definition side. Throws Compile time error: Unexpected type found
+      
+    //	ArrayList<?> arrList6 = new ArrayList<?>(); //Invalid. Same reason as above
+    }
+}
 
 
 
