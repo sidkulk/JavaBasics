@@ -623,3 +623,63 @@ class RunTimeCompileTime {
 		out.println(list);
 	}
 }
+
+class GenMethDemo {
+	static <T extends Comparable<T>, V extends T> boolean isIn(T x, V[] y) {
+		for(int i=0;i<y.length;i++) {
+			if(x.equals(y[i])) return true;
+		}
+		return false;
+	}
+	
+	public static void main(String[] args) {
+		Integer nums[] = {1, 3, 7, 32, 87, 12};
+		out.println("Is 1 present in nums[]: "+isIn(1, nums));
+		
+		out.println("Is 67 present in nums[]: "+isIn(67, nums));
+		
+		out.println("Is 98 present in nums[]: "+isIn(98, nums));
+	}
+}
+
+/**
+	GENERIC Constructors
+*/
+
+class GenConst {
+	private double val;
+	private String sval;
+	private int ival;
+	
+	<T extends Number, V extends String>GenConst(T a1, T a2, V s1) {
+		val = a1.doubleValue();
+		ival = a2.intValue();
+		sval = s1.toString();
+	}
+	
+	@Override
+	public String toString() {
+		return ("Integer value: "+this.ival+" Double value: "+this.val+" String value: "+this.sval);
+	}
+	
+	public static void main(String[] args) {
+		GenConst gConst = new GenConst(12, 56.65, "Sid");
+		out.println(gConst);
+		
+		gConst = new GenConst(45.32, 87, "TestString");
+		out.println(gConst);
+	}
+}
+
+/**
+	GENERIC INTERFACES
+*/
+
+interface MyInterface<T extends Comparable<T>> {
+	void getCmpElement();
+	void getNonCmpElement();
+}
+
+class GenInetrDemp<T extends Comparable<T>> implements MyInterface<T> {
+	
+} 
