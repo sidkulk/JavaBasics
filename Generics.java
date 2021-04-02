@@ -675,11 +675,29 @@ class GenConst {
 	GENERIC INTERFACES
 */
 
-interface MyInterface<T extends Comparable<T>> {
-	void getCmpElement();
-	void getNonCmpElement();
-}
-
-class GenInetrDemp<T extends Comparable<T>> implements MyInterface<T> {
-	
+interface MinMax<T extends Comparable<T>> {
+	void min(T obj);
+	void max(T obj);
 } 
+
+class GenInterDemo<T extends Comparable<T>> implements MinMax<T> {
+	T[] values;
+	
+	GenInterDemo(T[] val) {
+		values = val;
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	@Override
+	public void min(T obj) {
+	
+	}
+	
+	@Override
+	public void max(T obj) {
+	
+	}
+}
