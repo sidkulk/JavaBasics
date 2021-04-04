@@ -91,6 +91,10 @@ interface NumFun {
 	int getResult(int n); //A functional interface
 }
 
+interface StringFun {
+	String funct(String str);
+}
+
 class BlockLambDemp {
 	public static void main(String[] args) {
 		NumFun num = (n) -> {
@@ -103,7 +107,17 @@ class BlockLambDemp {
 			return res;
 		};
 		
+		StringFun strRev = (str) -> {
+			
+			StringBuilder sb = new StringBuilder(str);
+			
+			return sb.reverse().toString();
+		};
+		
+		out.println("Reversing \"my name\": "+strRev.funct("Siddharth"));
+		
 		out.println("The factorial of of 2 is: "+num.getResult(2));
 		out.println("The factorial of of 10 is: "+num.getResult(10));
 	}
 }
+
