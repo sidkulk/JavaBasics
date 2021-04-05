@@ -121,3 +121,64 @@ class BlockLambDemp {
 	}
 }
 
+/**
+ * 
+ * 	GENERIC FUNCTIONAL INTERFACES
+ * 
+ * */
+ 
+ interface MyGenInterface<T extends Number> {
+	 T getResult(T a, T b);
+ }
+ 
+ class GenInterDemo {
+	 public static void main(String[] args) {
+		 MyGenInterface<Integer> add = (a, b) -> {
+			 return (a+b);
+		 };
+		 
+		 MyGenInterface<Float> sub = (a, b) -> {
+			 return (a-b);
+		 };
+		 
+		 MyGenInterface<Double> mul = (a, b) -> {
+			 return (a*b);
+		 };
+		 
+		 out.println("Addition of 2 integers 3, 5: "+add.getResult(3, 5));
+		 out.println("Subtraction of 2 floating point numbers 3.5, 6.5: "+sub.getResult(3.5f, 6.5f));
+		 out.println("Product of 2 double numbers 5.65, 2.12: "+mul.getResult(5.65, 2.12));
+	 }
+ }
+ 
+ /*
+  * 	Passing Lambda expression as method argument..
+  * */
+ 
+ interface StringTestFun {
+	 String funct(String str);
+ }
+ 
+ class MathPassLambda {
+	 
+	 static String removeSpaces(StringTestFun sf, String str) {
+		 return sf.funct(str);
+	 }
+	 
+	 public static void main(String[] args) {
+		 String str = "Passing lambda as method argument";
+		 
+		 String outStr = removeSpaces((inStr) -> {
+			 StringBuffer sb = new StringBuffer();
+			 for(int i=0;i<inStr.length();i++) {
+				 if(inStr.charAt(i) != ' ')
+					sb.append(inStr.charAt(i));
+			 }
+			 
+			 return sb.toString();
+		 }, str);
+		 
+		 out.println("After removing spaces: "+outStr);
+	 }
+ }
+ 
